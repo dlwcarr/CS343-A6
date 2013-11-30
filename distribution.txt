@@ -1,0 +1,13 @@
+Dane
+	main
+	bottlingplant
+	truck
+	vendingmachine
+	nameserver
+Alex
+	printer
+	parent
+	bank
+	watcardoffice
+	watcard
+	student
