@@ -1,3 +1,6 @@
+#ifndef VENDINGMACHINE_H
+#define VENDINGMACHINE_H
+
 #include <uC++.h>
 #include "printer.h"
 #include "nameServer.h"
@@ -24,4 +27,7 @@ _Task VendingMachine {
     void restocked();
     _Nomutex unsigned int cost();
     _Nomutex unsigned int getId();
+    ~VendingMachine();
 };
+
+#endif
