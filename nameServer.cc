@@ -1,5 +1,7 @@
 #include "nameServer.h"
 
+using namespace std;
+
 NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned int numStudents ) : printer(prt), 
 			numVendingMachines(numVendingMachines), numStudents(numStudents), lastMachine(0) {
 	machineList = new VendingMachine* [numVendingMachines];
