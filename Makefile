@@ -1,5 +1,5 @@
 CXX = u++					# compiler
-CXXFLAGS = -g -Wall -Wno-unused-label -MMD # compiler flags
+CXXFLAGS = -g -Wall -Wno-unused-label -MMD -DNUM_FLAVOURS=4 # compiler flags, keep NUM_FLAVOURS consistent with VendingMachine::Flavours
 MAKEFILE_NAME = ${firstword ${MAKEFILE_LIST}}	# makefile name
 
 OBJECTS5 = bank.o bottlingPlant.o nameServer.o parent.o printer.o student.o truck.o vendingMachine.o watcard.o watcardOffice.o # list of object files

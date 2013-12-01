@@ -33,6 +33,10 @@ VendingMachine* NameServer::getMachine( unsigned int id ) {
 }
 
 VendingMachine** NameServer::getMachineList() {
+	// block until all vending machines are registered
+	while (lastMachine < numVendingMachines)
+		machineNotRegistered.wait();
+
 	return machineList;
 }
 
