@@ -58,6 +58,7 @@ unsigned int Printer::getPos( Kind kind, unsigned int lid ) {
 		case Courier:
 			return 5 + numStudents + numVendingMachines + lid;
 	}
+	return 0;
 }
 
 
@@ -65,7 +66,7 @@ void Printer::print( Kind kind, char state ) {
 	if ( state == 'F' ) {
 		flush();
 		for ( unsigned int i = 0; i < total; i++) {
-			if ( i == kind ) {
+			if ( i == (unsigned int)kind ) {
 				cout << state << "\t";
 			} else {
 				cout << "..." << "\t";

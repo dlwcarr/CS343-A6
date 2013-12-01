@@ -1,9 +1,12 @@
+#ifndef BANK_H
+#define BANK_H
+
 #include <vector>
 
 _Monitor Bank {
 	unsigned int numStudents;
 	int* accounts;
-	vector<uCondition*> conds;
+	std::vector<uCondition*> conds;
   public:
     Bank( unsigned int numStudents );
     void deposit( unsigned int id, unsigned int amount );
@@ -11,3 +14,5 @@ _Monitor Bank {
 
     virtual ~Bank();
 };
+
+#endif
