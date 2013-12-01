@@ -1,6 +1,5 @@
 #include "printer.h"
-
-MPRNG RND;
+#include <iostream>
 
 Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsigned int numCouriers) :
   	numStudents(numStudents), numVendingMachines(numVendingMachines), numCouriers(numCouriers) {
@@ -11,7 +10,7 @@ Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsi
 	val1buff = new int[total]();
 	val2buff = new int[total]();
 
-	cout << "Parent\tWATOff\tNames\tTruck\tPlant\t"
+	cout << "Parent\tWATOff\tNames\tTruck\tPlant\t";
 
 	// print initial table header
 	for ( unsigned int i = 0; i < numStudents; i++ ) {

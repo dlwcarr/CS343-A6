@@ -7,7 +7,6 @@ _Monitor Printer {
     int* val1buff;                              // stores number associated with current state
     int* val2buff;
     void flush();                               // flushes and prints buffer
-    unsigned int getPos( Kind kind, unsigned int lid );	// returns position in buffer
   public:
     enum Kind { Parent, WATCardOffice, NameServer, Truck, BottlingPlant, Student, Vending, Courier };
     Printer( unsigned int numStudents, unsigned int numVendingMachines, unsigned int numCouriers );
@@ -19,4 +18,7 @@ _Monitor Printer {
     void print( Kind kind, unsigned int lid, char state, int value1, int value2 );
 
     virtual ~Printer();
+
+private:
+    unsigned int getPos( Kind kind, unsigned int lid ); // returns position in buffer
 };
