@@ -49,6 +49,8 @@ _Nomutex unsigned int VendingMachine::getId() {
 void VendingMachine::main() {
 	printer.print(Printer::VendingMachine, id, 'S', sodaCost);
 
+	nameServer.VMregister(this);
+
 	while(true) {
 		_Accept(~VendingMachine) {
 			break;

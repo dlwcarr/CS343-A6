@@ -1,6 +1,7 @@
 #include <uC++.h>
 #include <iostream>
 #include <unistd.h>
+#include <vector>
 #include "MPRNG.h"
 #include "config.h"
 
@@ -34,14 +35,30 @@ void uMain::main() {
 	ConfigParms config;
 	processConfigFile(filename, config);
 
-	osacquire(cout) << "sodaCost " << config.sodaCost << endl
-					<< "numStudents " << config.numStudents << endl
-					<< "maxPurchases " << config.maxPurchases << endl
-					<< "numVendingMachines " << config.numVendingMachines << endl
-					<< "maxStockPerFlavour " << config.maxStockPerFlavour << endl
-					<< "maxShippedPerFlavour " << config.maxShippedPerFlavour << endl
-					<< "timeBetweenShipments " << config.timeBetweenShipments << endl
-					<< "parentalDelay " << config.parentalDelay << endl
-					<< "numCouriers " << config.numCouriers << endl;
+	// osacquire(cout) << "sodaCost " << config.sodaCost << endl
+	// 				<< "numStudents " << config.numStudents << endl
+	// 				<< "maxPurchases " << config.maxPurchases << endl
+	// 				<< "numVendingMachines " << config.numVendingMachines << endl
+	// 				<< "maxStockPerFlavour " << config.maxStockPerFlavour << endl
+	// 				<< "maxShippedPerFlavour " << config.maxShippedPerFlavour << endl
+	// 				<< "timeBetweenShipments " << config.timeBetweenShipments << endl
+	// 				<< "parentalDelay " << config.parentalDelay << endl
+	// 				<< "numCouriers " << config.numCouriers << endl;
 
+	vector<VendingMachine*> machines(config.numVendingMachines);
+	vector<Student*> students(config.numStudents);
+
+	Printer printer(config.numStudents, config.numVendingMachines, config.numCouriers);
+	Bank bank(config.numStudents);
+	Parent parent(printer, bank, config.numStudents, config.parentalDelay);
+	WATCardOffice office(printer, bank, config.numCouriers);
+	NameServer nameServer(printer, config.numVendingMachines, config.numStudents);
+
+	for(unsigned int i = 0; i < machines.size(); i++)
+		machines[i] = new VendingMachine(printer, nameServer, i, config.sodaCost, config.maxStockPerFlavour);
+
+	BottlingPlant plant(printer, nameServer, config.numVendingMachines, config.maxShippedPerFlavour, config.maxStockPerFlavour, config.timeBetweenShipments);
+
+	for(unsigned int i = 0; i < students.size(); i++)
+		students[i] = new Student(printer, nameServer, office, i, config.maxPurchases); 
 }
