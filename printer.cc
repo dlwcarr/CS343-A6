@@ -41,7 +41,7 @@ void Printer::flush() {
 	if ( val2buff[i] != 0 ) cout << "," << val2buff[i];
 	cout << "\t";
 
-	buffer[i] = '\0';
+	buff[i] = '\0';
 	val1buff[i] = 0;
 	val2buff[i] = 0;
   } // for
