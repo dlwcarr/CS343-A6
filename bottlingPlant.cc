@@ -14,25 +14,37 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer, unsigned int
 
 BottlingPlant::~BottlingPlant() {
 	delete [] shipment;
+	delete truck;
 }
 
 bool BottlingPlant::getShipment( unsigned int cargo[] ) {
 	if (!open)
 		return true;
 
-
+	for(unsigned int i = 0; i < NUM_FLAVOURS; i++)
+		cargo[i] = shipment[i];
 
 	return false;
 }
 
 void BottlingPlant::produceShipment() {
-	for (unsigned int i = 0; i < NUM_FLAVOURS; i++) {
-
-	}
+	for (unsigned int i = 0; i < NUM_FLAVOURS; i++)
+		shipment[id] = rng(maxShippedPerFlavour);
 }
 
 void BottlingPlant::main() {
 	truck = new Truck(printer, nameServer, *this, numVendingMachines, maxStockPerFlavour);
 
+	yield(timeBetweenShipments);
+	produceShipment();
 
+	while(true) {
+		_Accept(~BottlingPlant) {
+			break;
+		}
+		or _Accept(getShipment) {
+			yield(timeBetweenShipments);
+			produceShipment();
+		}
+	}
 }
