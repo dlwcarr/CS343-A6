@@ -18,7 +18,7 @@ _Task VendingMachine {
 
   public:
     // Update makefile NUM_FLAVOURS after changing Flavours enum
-    enum Flavours { BLACK_CHERRY, CREAM_SODA, ROOT_BEER, LIME};                 // flavours of soda (YOU DEFINE)
+    enum Flavours { BLACK_CHERRY = 0, CREAM_SODA, ROOT_BEER, LIME};                 // flavours of soda (YOU DEFINE)
     enum Status { BUY, STOCK, FUNDS };     // purchase status: successful buy, out of stock, insufficient funds
     VendingMachine( Printer &prt, NameServer &nameServer, unsigned int id, unsigned int sodaCost,
                     unsigned int maxStockPerFlavour );
