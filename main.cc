@@ -32,7 +32,7 @@ void uMain::main() {
 	rng.seed(seed);
 
 	ConfigParms config;
-	config.processConfigFile(filename, config);
+	processConfigFile(filename, config);
 
 	osacquire(cout) << "sodaCost " << config.sodaCost << endl
 					<< "numStudents " << config.numStudents << endl
