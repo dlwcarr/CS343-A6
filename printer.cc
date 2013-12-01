@@ -21,7 +21,7 @@ Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsi
 		cout << "Mach" << i << "\t";
 	} // for
 	for ( unsigned int i = 0; i < numCouriers; i++ ) {
-		cout << "Cour0" << i << "\t";
+		cout << "Cour" << i << "\t";
 	} // for
 	cout << endl;
 
@@ -129,7 +129,9 @@ void Printer::print( Kind kind, unsigned int lid, char state, int value1, int va
 }
 
 Printer::~Printer() {
-  delete[] buff;
-  delete[] val1buff;
-  delete[] val2buff;
+	delete[] buff;
+	delete[] val1buff;
+	delete[] val2buff;
+
+	cout << "***********************" << endl;
 } // ~Printer
