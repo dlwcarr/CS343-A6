@@ -14,6 +14,8 @@ NameServer::~NameServer() {
 }
 
 void NameServer::VMregister( VendingMachine *vendingmachine ) {
+	printer.print(Printer::NameServer, lastMachine, 'R');
+
 	machineList[lastMachine] = vendingmachine;
 	lastMachine += 1;
 
@@ -27,7 +29,9 @@ VendingMachine* NameServer::getMachine( unsigned int id ) {
 	while (studentsMachine[id] >= lastMachine)
 		machineNotRegistered.wait();
 
-	VendingMachine* machine = studentsMachine[id];
+	VendingMachine* machine = machineList[studentsMachine[id]];
+	printer.print(Printer::NameServer, id, 'N', studentsMachine[id]);
+
 	studentsMachine[id] = (studentsMachine[id] + 1) % numVendingMachines;
 	return machine;
 }
@@ -41,6 +45,8 @@ VendingMachine** NameServer::getMachineList() {
 }
 
 void NameServer::main() {
+	printer.print(Printer::NameServer, 'S');
+
 	// assign initial vending machines to students
 	for (unsigned int i = 0; i < numStudents; i++) {
 		studentsMachine[i] = i % numVendingMachines;
@@ -51,4 +57,6 @@ void NameServer::main() {
 			break;
 		} _Else {}
 	}
+
+	printer.print(Printer::NameServer, 'F');
 }
