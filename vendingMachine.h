@@ -3,9 +3,8 @@
 
 #include <uC++.h>
 #include "printer.h"
-#include "nameServer.h"
 #include "watcard.h"
-#include <vector>
+#include "nameServer.h"
 
 _Task VendingMachine {
     void main();
