@@ -1,4 +1,4 @@
-#include "q2printer.h"
+#include "printer.h"
 
 MPRNG RND;
 
