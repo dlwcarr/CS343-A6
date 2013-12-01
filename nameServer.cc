@@ -30,7 +30,7 @@ VendingMachine* NameServer::getMachine( unsigned int id ) {
 		machineNotRegistered.wait();
 
 	VendingMachine* machine = machineList[studentsMachine[id]];
-	printer.print(Printer::NameServer, id, 'N', studentsMachine[id]);
+	printer.print(Printer::NameServer, 'N', id, studentsMachine[id]);
 
 	studentsMachine[id] = (studentsMachine[id] + 1) % numVendingMachines;
 	return machine;

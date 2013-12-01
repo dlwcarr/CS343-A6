@@ -30,7 +30,7 @@ void Truck::main() {
 		printer.print(Printer::Truck, 'P', shipmentSize);
 
 		for(unsigned int i = 0; i < numVendingMachines; i++) {
-			printer.print(Printer::Truck, i, 'd', shipmentSize);
+			printer.print(Printer::Truck, 'd', i, shipmentSize);
 			
 			unsigned int* inventory = machines[i]->inventory();
 			unsigned int unfilledCapacity = 0;
@@ -45,9 +45,9 @@ void Truck::main() {
 			}
 
 			if (unfilledCapacity > 0)
-				printer.print(Printer::Truck, i, 'U', unfilledCapacity);
+				printer.print(Printer::Truck, 'U', i, unfilledCapacity);
 
-			printer.print(Printer::Truck, i, 'D', shipmentSize);
+			printer.print(Printer::Truck, 'D', i, shipmentSize);
 
 			machines[i]->restocked();
 
