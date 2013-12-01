@@ -39,7 +39,7 @@ void uMain::main() {
 					<< "maxPurchases " << config.maxPurchases << endl
 					<< "numVendingMachines " << config.numVendingMachines << endl
 					<< "maxStockPerFlavour " << config.maxStockPerFlavour << endl
-					<< "maxShipperPerFlavour " << config.maxShipperPerFlavour << endl
+					<< "maxShippedPerFlavour " << config.maxShippedPerFlavour << endl
 					<< "timeBetweenShipments " << config.timeBetweenShipments << endl
 					<< "parentalDelay " << config.parentalDelay << endl
 					<< "numCouriers " << config.numCouriers << endl;
