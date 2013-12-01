@@ -1,6 +1,7 @@
 #include "watcardOffice.h"
 
-WATCardOffice::WATCardOffice( Printer &prt, Bank &bank, unsigned int numCouriers ) {
+WATCardOffice::WATCardOffice( Printer &prt, Bank &bank, unsigned int numCouriers ) :
+	prt(prt), bank(bank), numCouriers(numCouriers) {
 
 }
 
@@ -12,4 +13,10 @@ FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard
 
 }
 
-Job* WATCardOffice::requestWork();
+Job* WATCardOffice::requestWork() {
+
+}
+
+WATCardOffice::~WATCardOffice() {
+
+}
