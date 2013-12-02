@@ -39,7 +39,7 @@ void Student::main() {
 				}
 			} catch ( WATCardOffice::Lost ) {
 				prt.print( Printer::Student, id, 'L' );
-				WATCard::FWATCard futureCard = cardOffice.create(id, 5);
+				futureCard = cardOffice.create(id, 5);
 			}
 		}
 	}
