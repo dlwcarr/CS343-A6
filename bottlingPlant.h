@@ -4,7 +4,9 @@
 #include "printer.h"
 #include "nameServer.h"
 
-_Task Truck;
+_Task BottlingPlant;
+
+#include "truck.h"
 
 _Task BottlingPlant {
     void main();
