@@ -45,6 +45,7 @@ void WATCardOffice::main() {
 			prt.print( Printer::WATCardOffice, 'W' );
 		} or _Accept( create, transfer ) {
 		} or _Accept( ~WATCardOffice ) {
+			for ( unsigned int i = 0; i < numCouriers; i++ ) _Accept( requestWork );
 			break;
 		}
 	}
