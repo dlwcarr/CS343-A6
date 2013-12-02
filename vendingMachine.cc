@@ -57,7 +57,7 @@ void VendingMachine::main() {
 		}
 		or _When(stocking) _Accept(restocked) {
 
-		} _Else {}
+		} or _Accept(buy, inventory) {}
 	}
 
 	printer.print(Printer::Vending, id, 'F');
