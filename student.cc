@@ -25,6 +25,7 @@ void Student::main() {
 
 		while ( true ) {
 			try {
+				osacquire(cout) << "PENIS" << endl;
 				VendingMachine::Status status = vend->buy(fav, *futureCard());
 				osacquire(cout) << "STATUS: " << status << endl;
 				if ( status == VendingMachine::BUY ) {

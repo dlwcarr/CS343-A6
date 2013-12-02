@@ -67,7 +67,7 @@ void WATCardOffice::Courier::main() {
 			job->args.card->deposit( job->args.amount );
 			prt.print( Printer::Courier, id, 'T', job->args.sid, job->args.amount );
 
-			if ( !rng(0,5) ) {
+			if ( rng(5) == 0 ) {
 				delete job->args.card;
 				job->result.exception( new WATCardOffice::Lost() );
 			} else {
