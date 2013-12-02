@@ -7,8 +7,8 @@ class WATCard {
     WATCard( const WATCard & );            // prevent copying
     WATCard &operator=( const WATCard & );
 
-    unsigned int balance;
-    uCondition withdrawCond;
+    unsigned int balance;                   // watcard balance
+    uCondition withdrawCond;                // prevents withdrawals if balance is too low
 
   public:
     WATCard();
@@ -16,6 +16,6 @@ class WATCard {
     void deposit( unsigned int amount );
     void withdraw( unsigned int amount );
     unsigned int getBalance();
-};
+}; // Watcard
 
 #endif

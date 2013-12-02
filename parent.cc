@@ -3,11 +3,11 @@
 
 extern MPRNG rng;
 
-Parent::Parent(Printer &prt, Bank &bank, unsigned int numStudents, unsigned int parentalDelay) 
+Parent::Parent(Printer &prt, Bank &bank, unsigned int numStudents, unsigned int parentalDelay)
 				: prt(prt), bank(bank), numStudents(numStudents), parentalDelay(parentalDelay) {}
 
-void Parent::main() {
 
+void Parent::main() {
 	prt.print(Printer::Parent, 'S');
 
 	while ( true ) {
@@ -21,9 +21,9 @@ void Parent::main() {
 			bank.deposit(student, money);
 
 			prt.print(Printer::Parent, 'D', student, money);
-		}
-	}
+		} // _Accept
+	} // while
 
 	prt.print(Printer::Parent, 'F');
 
-}
+} // main
