@@ -15,7 +15,6 @@ BottlingPlant::BottlingPlant( Printer &prt, NameServer &nameServer, unsigned int
 
 BottlingPlant::~BottlingPlant() {
 	delete [] shipment;
-	delete truck;
 }
 
 bool BottlingPlant::getShipment( unsigned int cargo[] ) {
@@ -58,7 +57,7 @@ void BottlingPlant::main() {
 	}
 	
 	open = false;
-	printer.print(Printer::BottlingPlant, 'F');
+	delete truck;
 
-	return;
+	printer.print(Printer::BottlingPlant, 'F');
 }
