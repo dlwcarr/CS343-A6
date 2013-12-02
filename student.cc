@@ -13,7 +13,7 @@ void Student::main() {
 
 	WATCard::FWATCard futureCard = cardOffice.create(id, 5);
 
-	VendingMachine* vend = getMachine( id );
+	VendingMachine* vend = VendingMachine::getMachine( id );
 	prt.print( Printer::Student, id, 'V', vend->getId() );
 
 	while ( purchases > 0 ) {
