@@ -2,6 +2,7 @@
 #define WATCARDOFFICE_H
 
 #include <vector>
+#include <deque>
 #include "watcard.h"
 #include "printer.h"
 #include "bank.h"
@@ -36,7 +37,8 @@ _Task WATCardOffice {
     Printer &prt;
     Bank &bank;
     unsigned int numCouriers;
-    vector<Job*> jobs;
+    vector<Courier*> couriers;
+    deque<Job*> jobs;
 
     void main();
   public:

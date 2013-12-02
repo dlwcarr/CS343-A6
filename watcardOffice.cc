@@ -5,22 +5,49 @@ extern MPRNG rng;
 WATCardOffice::WATCardOffice( Printer &prt, Bank &bank, unsigned int numCouriers ) :
 	prt(prt), bank(bank), numCouriers(numCouriers) {
 
+		for ( unsigned int i = 0; i < numCouriers; i ++ ) {
+			couriers.push_back( new Courier( prt, bank, this, i ) );
+		}
 }
 
 FWATCard WATCardOffice::create( unsigned int sid, unsigned int amount ) {
-
+	Job::Args args( sid, amount, new WATCard() );
+	Job* job = new Job( args );
+	jobs.push_back(job);
+	return job->result;
 }
 
 FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard *card ) {
-
+	Job::Args args( sid, amount, card );
+	Job* job = new Job( args );
+	jobs.push_back(job)
+	return job->result;
 }
 
 WATCardOffice::Job* WATCardOffice::requestWork() {
+	return jobs.front();
+}
 
+void WATCardOffice::main() {
+	prt.print( Printer::WATCardOffice, 'S' );
+
+	while ( true ) {
+		_When( !jobs.empty() ) _Accept( requestWork ) {
+			jobs.pop_front();
+			prt.print( Printer::WATCardOffice, 'W' );
+		} or _Accept( create ) {
+			prt.print( Printer::WATCardOffice, 'C', job.back()->args.sid, job.back()->args.amount );
+		} or _Accept( transfer ) {
+			prt.print( Printer::WATCardOffice, 'T', job.back()->args.sid, job.back()->args.amount );
+		} or _Accept( ~WATCardOffice ) {
+			break;
+		}
+	}
 }
 
 WATCardOffice::~WATCardOffice() {
-
+	while(!couriers.empty()) delete couriers.back(), couriers.pop_back();
+	prt.print( Printer::WATCardOffice, 'F' );
 }
 
 void WATCardOffice::Courier::main() {
@@ -38,6 +65,7 @@ void WATCardOffice::Courier::main() {
 			prt.print( Printer::Courier, id, 'T', job->args.sid, jobs->args.amount );
 
 			if ( !rng(0,5) ) {
+				delete job->args.card;
 				job->result.exception( new WATCardOffice::Lost() );
 			} else {
 				job->result.delivery( jobs->args.card );
