@@ -38,8 +38,6 @@ void Student::main() {
 				}
 			} catch ( WATCardOffice::Lost ) {
 				prt.print( Printer::Student, id, 'L' );
-				delete realCard;
-				WATCard* realCard = new WATCard;
 				WATCard::FWATCard futureCard = cardOffice.create(id, 5);
 			}
 		}
