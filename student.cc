@@ -34,7 +34,7 @@ void Student::main() {
 					futureCard = cardOffice.transfer(id, 5 + vend->cost(), realCard);
 				} else if ( status == VendingMachine::STOCK ) {
 					prt.print( Printer::Student, id, 'V', vend->getId() );
-					vend = getMachine( id );
+					vend = nameServer.getMachine( id );
 				}
 			} catch ( WATCardOffice::Lost ) {
 				prt.print( Printer::Student, id, 'L' );
@@ -45,13 +45,10 @@ void Student::main() {
 		}
 	}
 
+	delete realCard;
 	prt.print( Printer::Student, id, 'F' );
 }
 
 Student::Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffice, unsigned int id,
     	unsigned int maxPurchases ) : prt(prt), nameServer(nameServer), cardOffice(cardOffice),
 			id(id), maxPurchases(maxPurchases) {}
-
-Student::~Student() {
-	delete realCard;
-}

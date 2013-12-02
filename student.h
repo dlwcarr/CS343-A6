@@ -17,7 +17,6 @@ _Task Student {
     Student( Printer &prt, NameServer &nameServer, WATCardOffice &cardOffice, unsigned int id,
              unsigned int maxPurchases );
 
-    virtual ~Student();
 };
 
 #endif
