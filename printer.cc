@@ -14,40 +14,40 @@ Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsi
 	fill_n(val1buff, total, -1);
 	fill_n(val2buff, total, -1);
 
-	cout << "Parent\tWATOff\tNames\tTruck\tPlant\t";
+	osacquire(cout) << "Parent\tWATOff\tNames\tTruck\tPlant\t";
 
 	// print initial table header
 	for ( unsigned int i = 0; i < numStudents; i++ ) {
-		cout << "Stud" << i << "\t";
+		osacquire(cout) << "Stud" << i << "\t";
 	} // for
 	for ( unsigned int i = 0; i < numVendingMachines; i++ ) {
-		cout << "Mach" << i << "\t";
+		osacquire(cout) << "Mach" << i << "\t";
 	} // for
 	for ( unsigned int i = 0; i < numCouriers; i++ ) {
-		cout << "Cour" << i << "\t";
+		osacquire(cout) << "Cour" << i << "\t";
 	} // for
-	cout << endl;
+	osacquire(cout) << endl;
 
-	cout << endl;
+	osacquire(cout) << endl;
 	for ( unsigned int i = 0; i < total; i++ ) {
-		cout << "*******" << "\t";
+		osacquire(cout) << "*******" << "\t";
 	} // for
-	cout << endl;
+	osacquire(cout) << endl;
 } // CXR
 
 void Printer::flush() {
   for ( unsigned int i = 0; i < total; i++ ) {
 
-	cout << buff[i];
-	if ( val1buff[i] != -1 ) cout << val1buff[i];
-	if ( val2buff[i] != -1 ) cout << "," << val2buff[i];
-	cout << "\t";
+	osacquire(cout) << buff[i];
+	if ( val1buff[i] != -1 ) osacquire(cout) << val1buff[i];
+	if ( val2buff[i] != -1 ) osacquire(cout) << "," << val2buff[i];
+	osacquire(cout) << "\t";
 
 	buff[i] = '\0';
 	val1buff[i] = -1;
 	val2buff[i] = -1;
   } // for
-  cout << endl;
+  osacquire(cout) << endl;
 } // flush
 
 
@@ -71,12 +71,12 @@ void Printer::print( Kind kind, char state ) {
 		flush();
 		for ( unsigned int i = 0; i < total; i++) {
 			if ( i == (unsigned int)kind ) {
-				cout << state << "\t";
+				osacquire(cout) << state << "\t";
 			} else {
-				cout << "..." << "\t";
+				osacquire(cout) << "..." << "\t";
 			}
 		}
-		cout << endl;
+		osacquire(cout) << endl;
 		return;
 	}
 
@@ -105,12 +105,12 @@ void Printer::print( Kind kind, unsigned int lid, char state ) {
 		flush();
 		for ( unsigned int i = 0; i < total; i++) {
 			if ( i == pos ) {
-				cout << state << "\t";
+				osacquire(cout) << state << "\t";
 			} else {
-				cout << "..." << "\t";
+				osacquire(cout) << "..." << "\t";
 			}
 		}
-		cout << endl;
+		osacquire(cout) << endl;
 		return;
 	}
 
@@ -139,5 +139,5 @@ Printer::~Printer() {
 	delete[] val1buff;
 	delete[] val2buff;
 
-	cout << "***********************" << endl;
+	osacquire(cout) << "***********************" << endl;
 } // ~Printer
