@@ -25,7 +25,7 @@ _Task WATCardOffice {
     _Task Courier {
         unsigned int id;
         Printer &prt;
-        Banke &bank;
+        Bank &bank;
         WATCardOffice &cardOffice;
 
         void main();
