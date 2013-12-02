@@ -23,7 +23,7 @@ WATCard::FWATCard WATCardOffice::create( unsigned int sid, unsigned int amount )
 WATCard::FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard *card ) {
 	Job::Args args( sid, amount, card );
 	Job* job = new Job( args );
-	jobs.push_back(job)
+	jobs.push_back(job);
 	return job->result;
 }
 
