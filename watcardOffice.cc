@@ -39,9 +39,9 @@ void WATCardOffice::main() {
 			jobs.pop_front();
 			prt.print( Printer::WATCardOffice, 'W' );
 		} or _Accept( create ) {
-			prt.print( Printer::WATCardOffice, 'C', job.back()->args.sid, job.back()->args.amount );
+			prt.print( Printer::WATCardOffice, 'C', jobs.back()->args.sid, jobs.back()->args.amount );
 		} or _Accept( transfer ) {
-			prt.print( Printer::WATCardOffice, 'T', job.back()->args.sid, job.back()->args.amount );
+			prt.print( Printer::WATCardOffice, 'T', jobs.back()->args.sid, jobs.back()->args.amount );
 		} or _Accept( ~WATCardOffice ) {
 			break;
 		}
