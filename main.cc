@@ -11,6 +11,7 @@
 #include "nameServer.h"
 #include "vendingMachine.h"
 #include "student.h"
+#include "bottlingPlant.h"
 
 using namespace std;
 
