@@ -8,7 +8,7 @@ WATCardOffice::WATCardOffice( Printer &prt, Bank &bank, unsigned int numCouriers
 	prt(prt), bank(bank), numCouriers(numCouriers) {
 
 		for ( unsigned int i = 0; i < numCouriers; i ++ ) {
-			couriers.push_back( new Courier( prt, bank, this, i ) );
+			couriers.push_back( new Courier( prt, bank, *this, i ) );
 		}
 }
 

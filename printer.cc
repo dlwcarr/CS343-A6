@@ -57,6 +57,8 @@ unsigned int Printer::getPos( Kind kind, unsigned int lid ) {
 			return 5 + numStudents + lid;
 		case Courier:
 			return 5 + numStudents + numVendingMachines + lid;
+		default:
+			return 0;
 	}
 	return 0;
 }
