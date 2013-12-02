@@ -1,6 +1,11 @@
+#include <uC++.h>
+
 #include "student.h"
 #include "MPRNG.h"
 #include "vendingMachine.h"
+#include <iostream>
+
+using namespace std;
 
 extern MPRNG rng;
 
@@ -21,7 +26,7 @@ void Student::main() {
 		while ( true ) {
 			try {
 				VendingMachine::Status status = vend->buy(fav, *futureCard());
-
+				osacquire(cout) << "STATUS: " << status << endl;
 				if ( status == VendingMachine::BUY ) {
 					--purchases;
 					prt.print( Printer::Student, id, 'B', futureCard()->getBalance() );
