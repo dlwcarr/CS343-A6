@@ -9,8 +9,10 @@ Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsi
   	total = 5 + numStudents + numVendingMachines + numCouriers;
 
 	buff = new char[total]();
-	val1buff = new int[total]();
-	val2buff = new int[total]();
+	val1buff = new int[total];
+	val2buff = new int[total];
+	fill_n(val1buff, total, -1);
+	fill_n(val2buff, total, -1);
 
 	cout << "Parent\tWATOff\tNames\tTruck\tPlant\t";
 
@@ -37,13 +39,13 @@ void Printer::flush() {
   for ( unsigned int i = 0; i < total; i++ ) {
 
 	cout << buff[i];
-	if ( val1buff[i] != NULL ) cout << val1buff[i];
-	if ( val2buff[i] != NULL ) cout << "," << val2buff[i];
+	if ( val1buff[i] != -1 ) cout << val1buff[i];
+	if ( val2buff[i] != -1 ) cout << "," << val2buff[i];
 	cout << "\t";
 
 	buff[i] = '\0';
-	val1buff[i] = NULL;
-	val2buff[i] = NULL;
+	val1buff[i] = -1;
+	val2buff[i] = -1;
   } // for
   cout << endl;
 } // flush
