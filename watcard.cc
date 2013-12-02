@@ -13,7 +13,7 @@ void WATCard::deposit( unsigned int amount ) {
 }
 
 void WATCard::withdraw( unsigned int amount ) {
-	while ( amount < balance ) {
+	while ( amount > balance ) {
 		osacquire(cout) << "bal: " << balance << "\twdraw: " << amount << endl;
 		withdrawCond.wait();
 	}
