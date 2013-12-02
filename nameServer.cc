@@ -1,3 +1,5 @@
+#include <uC++.h>
+#include <iostream>
 #include "nameServer.h"
 
 using namespace std;
@@ -12,6 +14,7 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned 
 }
 
 NameServer::~NameServer() {
+	osacquire(cout) << "in DESTRUCTOR" << endl;
 	delete [] machineList;
 	delete [] studentsMachine;
 
