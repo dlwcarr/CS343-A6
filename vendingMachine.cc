@@ -4,7 +4,7 @@ using namespace std;
 
 VendingMachine::VendingMachine( Printer &prt, NameServer &nameServer, unsigned int id, unsigned int sodaCost,
                 unsigned int maxStockPerFlavour ) : printer(prt), nameServer(nameServer), id(id), sodaCost(sodaCost),
-                maxStockPerFlavour(maxStockPerFlavour), stocking(false), selling(false) {
+                maxStockPerFlavour(maxStockPerFlavour), stocking(false) {
 	stock = new unsigned int [NUM_FLAVOURS];
 }
 

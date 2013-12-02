@@ -10,7 +10,7 @@ _Task VendingMachine {
     void main();
 
     Printer& printer;
-    NamerServer& nameServer;
+    NameServer& nameServer;
     unsigned int id, sodaCost, maxStockPerFlavour;
     unsigned int* stock;
     bool stocking;
