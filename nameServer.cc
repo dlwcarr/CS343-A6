@@ -45,6 +45,7 @@ VendingMachine* NameServer::getMachine( unsigned int id ) {
 	VendingMachine* machine = machineList[studentsMachine[id]];
 	printer.print(Printer::NameServer, 'N', id, studentsMachine[id]);
 
+	// rotate student through machines
 	studentsMachine[id] = (studentsMachine[id] + 1) % numVendingMachines;
 	return machine;
 }

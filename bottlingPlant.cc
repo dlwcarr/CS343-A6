@@ -18,9 +18,11 @@ BottlingPlant::~BottlingPlant() {
 }
 
 bool BottlingPlant::getShipment( unsigned int cargo[] ) {
+	// tell truck plant is closed
 	if (!open)
 		return true;
 
+	// move shipment into truck
 	for(unsigned int i = 0; i < NUM_FLAVOURS; i++)
 		cargo[i] = shipment[i];
 
@@ -31,6 +33,7 @@ bool BottlingPlant::getShipment( unsigned int cargo[] ) {
 
 void BottlingPlant::produceShipment() {
 	int shipmentSize = 0;
+	// generate shipment
 	for (unsigned int i = 0; i < NUM_FLAVOURS; i++) {
 		shipment[i] = rng(maxShippedPerFlavour);
 		shipmentSize += shipment[i];
@@ -57,6 +60,7 @@ void BottlingPlant::main() {
 	}
 	
 	open = false;
+	// wait for truck to check for last shipment
 	_Accept(getShipment);
 	delete truck;
 

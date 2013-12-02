@@ -44,16 +44,6 @@ void uMain::main() {
 	ConfigParms config;
 	processConfigFile(filename.c_str(), config);
 
-	// osacquire(cout) << "sodaCost " << config.sodaCost << endl
-	// 				<< "numStudents " << config.numStudents << endl
-	// 				<< "maxPurchases " << config.maxPurchases << endl
-	// 				<< "numVendingMachines " << config.numVendingMachines << endl
-	// 				<< "maxStockPerFlavour " << config.maxStockPerFlavour << endl
-	// 				<< "maxShippedPerFlavour " << config.maxShippedPerFlavour << endl
-	// 				<< "timeBetweenShipments " << config.timeBetweenShipments << endl
-	// 				<< "parentalDelay " << config.parentalDelay << endl
-	// 				<< "numCouriers " << config.numCouriers << endl;
-
 	vector<VendingMachine*> machines(config.numVendingMachines);
 	vector<Student*> students(config.numStudents);
 

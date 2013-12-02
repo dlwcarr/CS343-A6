@@ -29,6 +29,7 @@ void Truck::main() {
 		if (plant.getShipment(cargo))
 			break;
 
+		// count shipment size
 		int shipmentSize = 0;
 		for (unsigned int i = 0; i < NUM_FLAVOURS; i++)
 			shipmentSize += cargo[i];
@@ -37,10 +38,12 @@ void Truck::main() {
 		for(unsigned int i = 0; i < numVendingMachines; i++) {
 			printer.print(Printer::Truck, 'd', i, shipmentSize);
 			
+			// get machine inventory
 			unsigned int* inventory = machines[i]->inventory();
 			unsigned int unfilledCapacity = 0;
 			
 			for (unsigned int j = 0; j < NUM_FLAVOURS; j++) {
+				// decide how much to put in the machine
 				unsigned int amountToStock = min(cargo[j], maxStockPerFlavour - inventory[j]);
 				
 				inventory[j] += amountToStock;
@@ -54,6 +57,7 @@ void Truck::main() {
 
 			printer.print(Printer::Truck, 'D', i, shipmentSize);
 
+			// signal machine that restocking is done
 			machines[i]->restocked();
 
 			if (shipmentSize < 1)

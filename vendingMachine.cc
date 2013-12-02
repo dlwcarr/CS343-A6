@@ -51,6 +51,7 @@ void VendingMachine::main() {
 	nameServer.VMregister(this);
 
 	while(true) {
+		// stop students from buying while machine is being restocked
 		_When(stocking) _Accept(restocked) {} 
 		or _Accept(buy, inventory) {}
 		or _Accept(~VendingMachine) {
