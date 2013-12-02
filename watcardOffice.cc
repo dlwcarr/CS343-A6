@@ -39,7 +39,7 @@ void WATCardOffice::main() {
 		_When( !jobs.empty() ) _Accept( requestWork ) {
 			jobs.pop_front();
 			prt.print( Printer::WATCardOffice, 'W' );
-		} or _Accept( create, transfer ) {
+		} or _Accept( create ) {
 			prt.print( Printer::WATCardOffice, 'C', jobs.back()->args.sid, jobs.back()->args.amount );
 		} or _Accept( transfer ) {
 			prt.print( Printer::WATCardOffice, 'T', jobs.back()->args.sid, jobs.back()->args.amount );
