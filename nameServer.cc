@@ -64,10 +64,10 @@ void NameServer::main() {
 	}
 
 	while(true) {
-		_Accept(~NameServer) {
+		_Accept(VMregister, getMachine, getMachineList) {}
+		and _Accept(~NameServer) {
 			break;
-		} or _Accept(VMregister, getMachine, getMachineList) {}
-		_Else {}
+		} 
 	}
 
 	printer.print(Printer::NameServer, 'F');
