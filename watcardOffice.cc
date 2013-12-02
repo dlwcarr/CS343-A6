@@ -58,25 +58,23 @@ void WATCardOffice::Courier::main() {
 	prt.print( Printer::Courier, id, 'S' );
 
 	while ( true ) {
-		_Accept(~Courier) {
-			break;
-		} _Else {
-			WATCardOffice::Job* job = cardOffice.requestWork();
+		WATCardOffice::Job* job = cardOffice.requestWork();
 
-			prt.print( Printer::Courier, id, 't', job->args.sid, job->args.amount );
-			bank.withdraw( job->args.sid, job->args.amount );
-			job->args.card->deposit( job->args.amount );
-			prt.print( Printer::Courier, id, 'T', job->args.sid, job->args.amount );
+		if ( job == NULL ) break;
 
-			if ( rng(5) == 0 ) {
-				delete job->args.card;
-				job->result.exception( new WATCardOffice::Lost() );
-			} else {
-				job->result.delivery( job->args.card );
-			}
+		prt.print( Printer::Courier, id, 't', job->args.sid, job->args.amount );
+		bank.withdraw( job->args.sid, job->args.amount );
+		job->args.card->deposit( job->args.amount );
+		prt.print( Printer::Courier, id, 'T', job->args.sid, job->args.amount );
 
-			delete job;
+		if ( rng(5) == 0 ) {
+			delete job->args.card;
+			job->result.exception( new WATCardOffice::Lost() );
+		} else {
+			job->result.delivery( job->args.card );
 		}
+
+		delete job;
 	}
 
 	prt.print( Printer::Courier, id, 'F' );
