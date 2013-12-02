@@ -1,5 +1,6 @@
 #include "student.h"
 #include "MPRNG.h"
+#include "vendingMachine.h"
 
 extern MPRNG rng;
 
