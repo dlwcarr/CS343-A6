@@ -11,7 +11,7 @@ void Student::main() {
 
 	WATCard* realCard = new WATCard;
 
-	FWATCard futureCard = cardOffice.create(id, 5);
+	WATCard::FWATCard futureCard = cardOffice.create(id, 5);
 
 	VendingMachine* vend = getMachine( id );
 	prt.print( Printer::Student, id, 'V', vend->getId() );
@@ -39,7 +39,7 @@ void Student::main() {
 				prt.print( Printer::Student, id, 'L' );
 				delete realCard;
 				WATCard* realCard = new WATCard;
-				FWATCard futureCard = cardOffice.create(id, 5);
+				WATCard::FWATCard futureCard = cardOffice.create(id, 5);
 			}
 		}
 	}
