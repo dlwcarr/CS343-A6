@@ -68,7 +68,6 @@ void NameServer::main() {
 			break;
 		}
 		or _Accept(VMregister, getMachine, getMachineList) {}
-		_Else {}
 	}
 
 	printer.print(Printer::NameServer, 'F');
