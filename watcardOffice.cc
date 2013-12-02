@@ -28,6 +28,7 @@ WATCard::FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount
 }
 
 WATCardOffice::Job* WATCardOffice::requestWork() {
+	if ( jobs.empty() ) return NULL;
 	return jobs.front();
 }
 
