@@ -1,0 +1,145 @@
+A4 Q2 TEST DOCUMENTATION
+=========================
+The program uses tasks and monitors to implement the santa claus problem.
+
+NOTE: FOR ALL TESTS, THE CORRECTNESS OF THE OUTPUT WAS SHOWN TO BE CORRECT THROUGH
+MANUAL INVESTIGATION AS WELL AS COMPARISON TO OUTPUT FROM THE GIVEN EXECUTABLE.
+
+
+ALGORITHM TESTING
+  BESIDES TEST 1, ALL PROGRAM OUTPUT HAS BEEN OMITTED DUE TO LENGTH AND
+  LACK OF READABILITY
+
+  1. DATA DESCRIPTION
+  The first attempt was run as follows: ./northpole 1 5 1003 1 1
+
+  TESTING
+  Here is the script-fixed log of the testing performed.
+
+  ./northpole 1 5 1003 1 1
+  Sa  E1  E2  E3  E4  E5  R6  R7  R8  R9  R10
+  S             S
+  N             V
+  B   S   S
+    S     W
+    W W       S I     S
+                B 1     V
+                      I
+      H               B 2
+      B 1   H
+    H     B 2       S
+    B 3   S
+  U     W     V
+  A
+  C U 3   H     I   V
+    C     U 2 S       S
+      U 1   C         V
+  B 1 B 2 C B 1 B 3 W B 3   I I
+      c   U 2 H     B 4 B 5
+    U 1     c
+  U c
+  c         B 2
+  N
+  ... ... F ... ... ... ... ... ... ... ...
+
+  ... ... ... ... F ... ... ... ... ... ...
+
+  ... F ... ... ... ... ... ... ... ... ...
+  A
+  D                 U 5
+                  U 4 D
+              U 3   D
+              D       U 2
+                U 1     D
+            U 2   D
+        U 1   X
+  B 3     X       B 4   B 1 B 2
+  ... ... ... ... ... F ... ... ... ... ...
+                  B 5
+  ... ... ... F ... ... ... ... ... ... ...
+              d
+  ... ... ... ... ... ... F ... ... ... ...
+                  U 4
+                  d
+  ... ... ... ... ... ... ... ... F ... ...
+                U 3
+                d
+  ... ... ... ... ... ... ... F ... ... ...
+  U 2
+  d                   U 1
+                      d
+  ... ... ... ... ... ... ... ... ... ... F
+  N                 U
+                    d
+  ... ... ... ... ... ... ... ... ... F ...
+  A
+  F ... ... ... ... ... ... ... ... ... ...
+
+  ANALYSIS
+
+  Although a bit difficult to examine due to formatting issues, the test
+  shows the solution is correct for a bound of 1, with 5 elves, seed of 1003,
+  and 1 consultation per elf, 1 delivery per deer. Although executed in a
+  slightly different order than the test executable, it is clearly performing
+  the correct tasks. This test also shows that unsuccseful consultations are
+  handled correctly and that the deer can only execute a max of 1 time before
+  elves execute (as per N).
+
+
+  2. DATA DESCRIPTION
+  The next attempt was run as follows: ./northpole 1 5 1003 10 10
+
+  ANALYSIS
+
+  This test shows the correctness of having each deer deliver 10 times
+  and each elf consult 10 times.
+
+  3. DATA DESCRIPTION
+  The next attempt was run as follows: ./northpole 1 5 1003 100 100
+
+  ANALYSIS
+
+  This test shows the correctness of having each deer deliver 100 times
+  and each elf consult 100 times.
+
+  4. DATA DESCRIPTION
+  The next attempt was run as follows: ./northpole 3 5 1003 10 10
+
+  ANALYSIS
+
+  This test shows the correctness of having a bound of 3 on the number
+  of times deer get served ahead of elves. It is important to not that in
+  the output the deer never ran more than 3 times without a consultation
+  occuring between santa and the elves.
+
+  5. DATA DESCRIPTION
+  The next attempt was run as follows: ./northpole 3 100 1003 10 10
+
+  ANALYSIS
+
+  This test shows the correctness of having a large amount of elves.
+  The elves correctly completed all of their tasks and unsuccessful
+  consultations still terminated correctly.
+
+  6. DATA DESCRIPTION
+  The next attempt was run as follows: ./northpole 3 5 1003 1 100
+
+  ANALYSIS
+
+  This test shows the correctness of having the deer run alot
+  more deliveries than the elves have consultations. It is
+  important to note that the deer never delivered more than 3 times before
+  the elves had a consultation with santa, except after the elves were finished.
+
+  7. DATA DESCRIPTION
+  The next attempt was run as follows: ./northpole 3 5 1003 100 1
+
+  ANALYSIS
+
+  This test shows the correctness of having the elves consult alot
+  more with santa than the deer have deliveries.
+
+
+  CONCLUSION
+
+  Clearly, the tests cover a wide range of scenarions, covering extensively a wide range of parameter values. These tests undoubtedly confirm the correctness of the algorithm.
