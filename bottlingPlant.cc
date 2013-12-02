@@ -33,8 +33,8 @@ bool BottlingPlant::getShipment( unsigned int cargo[] ) {
 void BottlingPlant::produceShipment() {
 	int shipmentSize = 0;
 	for (unsigned int i = 0; i < NUM_FLAVOURS; i++) {
-		shipment[id] = rng(maxShippedPerFlavour);
-		shipmentSize += shipment[id];
+		shipment[i] = rng(maxShippedPerFlavour);
+		shipmentSize += shipment[i];
 	}
 	printer.print(Printer::BottlingPlant, 'G', shipmentSize);
 }
