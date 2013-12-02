@@ -65,7 +65,7 @@ void NameServer::main() {
 
 	while(true) {
 		_Accept(VMregister, getMachine, getMachineList) {}
-		and _Accept(~NameServer) {
+		or _Accept(~NameServer) {
 			break;
 		} 
 	}
