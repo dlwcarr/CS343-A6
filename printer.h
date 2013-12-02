@@ -1,3 +1,6 @@
+#ifndef PRINTER_H
+#define PRINTER_H
+
 _Monitor Printer {
 	unsigned int numStudents;
 	unsigned int numVendingMachines;
@@ -18,7 +21,10 @@ _Monitor Printer {
     void print( Kind kind, unsigned int lid, char state, int value1, int value2 );
 
     virtual ~Printer();
-
-private:
+    private:
     unsigned int getPos( Kind kind, unsigned int lid ); // returns position in buffer
 };
+
+
+#endif
+
