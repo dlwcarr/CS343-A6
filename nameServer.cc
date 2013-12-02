@@ -55,7 +55,7 @@ void NameServer::main() {
 	while(true) {
 		_Accept(~NameServer) {
 			break;
-		} or _Accept(VMRegister, getMachine, getMachineList) {}
+		} or _Accept(VMregister, getMachine, getMachineList) {}
 	}
 
 	printer.print(Printer::NameServer, 'F');
