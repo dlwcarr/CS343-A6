@@ -13,7 +13,6 @@ VendingMachine::~VendingMachine() {
 }
 
 VendingMachine::Status VendingMachine::buy( Flavours flavour, WATCard &card ) {
-	// need to figure out precedence of STOCK vs FUNDS
 	if (card.getBalance() < sodaCost)
 		return FUNDS;
 	if (stock[flavour] == 0)
@@ -52,12 +51,11 @@ void VendingMachine::main() {
 	nameServer.VMregister(this);
 
 	while(true) {
-		_Accept(~VendingMachine) {
+		_When(stocking) _Accept(restocked) {} 
+		or _Accept(buy, inventory) {}
+		or _Accept(~VendingMachine) {
 			break;
 		}
-		or _When(stocking) _Accept(restocked) {
-
-		} or _Accept(buy, inventory) {}
 	}
 
 	printer.print(Printer::Vending, id, 'F');
