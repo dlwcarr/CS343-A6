@@ -1,5 +1,10 @@
 #include "truck.h"
 #include "vendingMachine.h"
+#include "MPRNG.h"
+
+using namespace std;
+
+extern MPRNG rng;
 
 Truck::Truck( Printer &prt, NameServer &nameServer, BottlingPlant &plant,
        unsigned int numVendingMachines, unsigned int maxStockPerFlavour ) : printer(prt), nameServer(nameServer),
@@ -19,7 +24,7 @@ void Truck::main() {
 	VendingMachine** machines = nameServer.getMachineList();
 
 	while (true) {
-		yield(rng(1, 10)) 			// go to Tom Horton's
+		yield(rng(1, 10)); 			// go to Tom Horton's
 
 		if (plant.getShipment(cargo))
 			break;

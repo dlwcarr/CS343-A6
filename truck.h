@@ -3,6 +3,9 @@
 
 #include "printer.h"
 #include "nameServer.h"
+
+_Task Truck;
+
 #include "bottlingPlant.h"
 
 _Task Truck {
