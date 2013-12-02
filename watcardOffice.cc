@@ -71,7 +71,7 @@ void WATCardOffice::Courier::main() {
 				delete job->args.card;
 				job->result.exception( new WATCardOffice::Lost() );
 			} else {
-				job->result.delivery( jobs->args.card );
+				job->result.delivery( job->args.card );
 			}
 
 			delete job;
