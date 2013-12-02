@@ -33,8 +33,8 @@ void Student::main() {
 				} else if ( status == VendingMachine::FUNDS ) {
 					futureCard = cardOffice.transfer(id, 5 + vend->cost(), futureCard);
 				} else if ( status == VendingMachine::STOCK ) {
-					prt.print( Printer::Student, id, 'V', vend->getId() );
 					vend = nameServer.getMachine( id );
+					prt.print( Printer::Student, id, 'V', vend->getId() );
 					yield(rng(1, 10));
 				}
 			} catch ( WATCardOffice::Lost ) {
