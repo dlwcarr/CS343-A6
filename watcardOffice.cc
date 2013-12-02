@@ -12,14 +12,14 @@ WATCardOffice::WATCardOffice( Printer &prt, Bank &bank, unsigned int numCouriers
 		}
 }
 
-FWATCard WATCardOffice::create( unsigned int sid, unsigned int amount ) {
+WATCard::FWATCard WATCardOffice::create( unsigned int sid, unsigned int amount ) {
 	Job::Args args( sid, amount, new WATCard() );
 	Job* job = new Job( args );
 	jobs.push_back(job);
 	return job->result;
 }
 
-FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard *card ) {
+WATCard::FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount, WATCard *card ) {
 	Job::Args args( sid, amount, card );
 	Job* job = new Job( args );
 	jobs.push_back(job)
