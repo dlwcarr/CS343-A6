@@ -37,13 +37,13 @@ void Printer::flush() {
   for ( unsigned int i = 0; i < total; i++ ) {
 
 	cout << buff[i];
-	if ( val1buff[i] != 0 ) cout << val1buff[i];
-	if ( val2buff[i] != 0 ) cout << "," << val2buff[i];
+	if ( val1buff[i] != NULL ) cout << val1buff[i];
+	if ( val2buff[i] != NULL ) cout << "," << val2buff[i];
 	cout << "\t";
 
 	buff[i] = '\0';
-	val1buff[i] = 0;
-	val2buff[i] = 0;
+	val1buff[i] = NULL;
+	val2buff[i] = NULL;
   } // for
   cout << endl;
 } // flush
