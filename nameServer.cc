@@ -3,31 +3,42 @@
 using namespace std;
 
 NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned int numStudents ) : printer(prt), 
-			numVendingMachines(numVendingMachines), numStudents(numStudents), lastMachine(0) {
+			numVendingMachines(numVendingMachines), numStudents(numStudents), lastMachine(0), machineNotRegistered(numStudents) {
 	machineList = new VendingMachine* [numVendingMachines];
 	studentsMachine = new unsigned int [numStudents];
+	
+	for (unsigned int i = 0; i < machineNotRegistered.size(); i++)
+		machineNotRegistered[i] = new uCondition();
 }
 
 NameServer::~NameServer() {
 	delete [] machineList;
 	delete [] studentsMachine;
+
+	for (unsigned int i = 0; i < machineNotRegistered.size(); i++)
+		delete machineNotRegistered[i];
 }
 
 void NameServer::VMregister( VendingMachine *vendingmachine ) {
 	printer.print(Printer::NameServer, lastMachine, 'R');
 
 	machineList[lastMachine] = vendingmachine;
+
+	// unblock students waiting on this machine
+	while (!machineNotRegistered[lastMachine].empty())
+		machineNotRegistered[lastMachine].signal();
+
 	lastMachine += 1;
 
-	// let students unblock when a new machine is registered
-	while (!machineNotRegistered.empty())
-		machineNotRegistered.signal();
+	// unblock truck once all machine are registered
+	if (lastMachine >= numVendingMachines)
+		truckLock.signal();
 }
 
 VendingMachine* NameServer::getMachine( unsigned int id ) {
 	// block if machine hasn't been registered yet
-	while (studentsMachine[id] >= lastMachine)
-		machineNotRegistered.wait();
+	if (studentsMachine[id] >= lastMachine)
+		machineNotRegistered[studentsMachine[id]].wait();
 
 	VendingMachine* machine = machineList[studentsMachine[id]];
 	printer.print(Printer::NameServer, 'N', id, studentsMachine[id]);
@@ -38,8 +49,8 @@ VendingMachine* NameServer::getMachine( unsigned int id ) {
 
 VendingMachine** NameServer::getMachineList() {
 	// block until all vending machines are registered
-	while (lastMachine < numVendingMachines)
-		machineNotRegistered.wait();
+	if (lastMachine < numVendingMachines)
+		truckLock.wait();
 
 	return machineList;
 }
