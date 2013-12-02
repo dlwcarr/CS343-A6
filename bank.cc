@@ -1,7 +1,7 @@
 #include "bank.h"
 
 Bank::Bank( unsigned int numStudents ) : numStudents(numStudents) {
-	accounts = new char[numStudents]();
+	accounts = new int[numStudents]();
 
 	for ( unsigned int i = 0; i < numStudents; i++ ) {
 		conds.push_back(new uCondition);
@@ -14,7 +14,7 @@ void Bank::deposit( unsigned int id, unsigned int amount ) {
 }
 
 void Bank::withdraw( unsigned int id, unsigned int amount ) {
-	while ( accounts[id] < amount ) {
+	while ( accounts[id] < (int)amount ) {
 		conds[id]->wait();
 	}
 
