@@ -2,6 +2,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <vector>
+#include <string>
 #include "MPRNG.h"
 #include "config.h"
 #include "printer.h"
@@ -23,7 +24,7 @@ void printUsage(char *argv) {
 
 void uMain::main() {
 	int seed = getpid();
-	char* filename = "soda.config";
+	string filename = "soda.config";
 
 	if (argc > 3) {
 		printUsage(argv[0]);
@@ -41,7 +42,7 @@ void uMain::main() {
 	rng.seed(seed);
 
 	ConfigParms config;
-	processConfigFile(filename, config);
+	processConfigFile(filename.c_str(), config);
 
 	// osacquire(cout) << "sodaCost " << config.sodaCost << endl
 	// 				<< "numStudents " << config.numStudents << endl
