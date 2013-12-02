@@ -3,7 +3,6 @@
 
 #include "printer.h"
 #include "nameServer.h"
-#include "bottlingPlant.h"
 
 _Task Truck {
     void main();
