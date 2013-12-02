@@ -1,8 +1,9 @@
 #include "watcardOffice.h"
-
-extern MPRNG rng;
+#include "MPRNG.h"
 
 using namespace std;
+
+extern MPRNG rng;
 
 WATCardOffice::WATCardOffice( Printer &prt, Bank &bank, unsigned int numCouriers ) :
 	prt(prt), bank(bank), numCouriers(numCouriers) {
