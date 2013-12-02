@@ -81,8 +81,8 @@ void uMain::main() {
 		delete machines[i];
 
 	delete nameServer;
-	delete office;
 	delete parent;
+	delete office;
 	delete bank;
 	delete printer;
 }
