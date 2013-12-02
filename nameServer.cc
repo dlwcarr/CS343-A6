@@ -5,7 +5,7 @@
 using namespace std;
 
 NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned int numStudents ) : printer(prt), 
-			numVendingMachines(numVendingMachines), numStudents(numStudents), lastMachine(0), machineNotRegistered(numStudents) {
+			numVendingMachines(numVendingMachines), numStudents(numStudents), lastMachine(0), machineNotRegistered(numVendingMachines) {
 	machineList = new VendingMachine* [numVendingMachines];
 	studentsMachine = new unsigned int [numStudents];
 	
