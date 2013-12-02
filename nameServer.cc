@@ -25,8 +25,8 @@ void NameServer::VMregister( VendingMachine *vendingmachine ) {
 	machineList[lastMachine] = vendingmachine;
 
 	// unblock students waiting on this machine
-	while (!machineNotRegistered[lastMachine].empty())
-		machineNotRegistered[lastMachine].signal();
+	while (!machineNotRegistered[lastMachine]->empty())
+		machineNotRegistered[lastMachine]->signal();
 
 	lastMachine += 1;
 
@@ -38,7 +38,7 @@ void NameServer::VMregister( VendingMachine *vendingmachine ) {
 VendingMachine* NameServer::getMachine( unsigned int id ) {
 	// block if machine hasn't been registered yet
 	if (studentsMachine[id] >= lastMachine)
-		machineNotRegistered[studentsMachine[id]].wait();
+		machineNotRegistered[studentsMachine[id]]->wait();
 
 	VendingMachine* machine = machineList[studentsMachine[id]];
 	printer.print(Printer::NameServer, 'N', id, studentsMachine[id]);
