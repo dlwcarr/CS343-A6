@@ -20,7 +20,7 @@ NameServer::~NameServer() {
 }
 
 void NameServer::VMregister( VendingMachine *vendingmachine ) {
-	printer.print(Printer::NameServer, lastMachine, 'R');
+	printer.print(Printer::NameServer, 'R', lastMachine);
 
 	machineList[lastMachine] = vendingmachine;
 
