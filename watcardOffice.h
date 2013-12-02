@@ -37,8 +37,8 @@ _Task WATCardOffice {
     Printer &prt;
     Bank &bank;
     unsigned int numCouriers;
-    vector<Courier*> couriers;
-    deque<Job*> jobs;
+    std::vector<Courier*> couriers;
+    std::deque<Job*> jobs;
 
     void main();
   public:
