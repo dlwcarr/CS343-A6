@@ -57,6 +57,7 @@ void BottlingPlant::main() {
 	}
 	
 	open = false;
+	_Accept(getShipment);
 	delete truck;
 
 	printer.print(Printer::BottlingPlant, 'F');
