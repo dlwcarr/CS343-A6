@@ -1,5 +1,4 @@
 #include "watcard.h"
-#include <iostream>
 
 using namespace std;
 
@@ -13,10 +12,7 @@ void WATCard::deposit( unsigned int amount ) {
 }
 
 void WATCard::withdraw( unsigned int amount ) {
-	while ( amount > balance ) {
-		osacquire(cout) << "bal: " << balance << "\twdraw: " << amount << endl;
-		withdrawCond.wait();
-	}
+	while ( amount > balance ) withdrawCond.wait();
 	balance -= amount;
 }
 
