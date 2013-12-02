@@ -1,10 +1,7 @@
 #include "printer.h"
 #include <iostream>
-#include "MPRNG.h"
 
 using namespace std;
-
-MPRNG rng;
 
 Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsigned int numCouriers) :
   	numStudents(numStudents), numVendingMachines(numVendingMachines), numCouriers(numCouriers) {

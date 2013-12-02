@@ -14,6 +14,7 @@
 
 using namespace std;
 
+MPRNG rng;
 
 void printUsage(char *argv) {
 	osacquire(cout) << "Usage: " << argv << " [ config-file [ random-seed (> 0) ] ]" << endl;
