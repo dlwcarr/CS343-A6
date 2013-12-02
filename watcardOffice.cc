@@ -17,6 +17,8 @@ WATCard::FWATCard WATCardOffice::create( unsigned int sid, unsigned int amount )
 	Job::Args args( sid, amount, new WATCard() );
 	Job* job = new Job( args );
 	jobs.push_back(job);
+
+	prt.print( Printer::WATCardOffice, 'C', jobs.back()->args.sid, jobs.back()->args.amount );
 	return job->result;
 }
 
@@ -24,6 +26,8 @@ WATCard::FWATCard WATCardOffice::transfer( unsigned int sid, unsigned int amount
 	Job::Args args( sid, amount, card );
 	Job* job = new Job( args );
 	jobs.push_back(job);
+
+	prt.print( Printer::WATCardOffice, 'T', jobs.back()->args.sid, jobs.back()->args.amount );
 	return job->result;
 }
 
@@ -39,10 +43,7 @@ void WATCardOffice::main() {
 		_When( !jobs.empty() ) _Accept( requestWork ) {
 			jobs.pop_front();
 			prt.print( Printer::WATCardOffice, 'W' );
-		} or _Accept( create ) {
-			prt.print( Printer::WATCardOffice, 'C', jobs.back()->args.sid, jobs.back()->args.amount );
-		} or _Accept( transfer ) {
-			prt.print( Printer::WATCardOffice, 'T', jobs.back()->args.sid, jobs.back()->args.amount );
+		} or _Accept( create, transfer ) {
 		} or _Accept( ~WATCardOffice ) {
 			break;
 		}
