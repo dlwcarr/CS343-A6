@@ -10,8 +10,6 @@ void Student::main() {
 
 	prt.print( Printer::Student, id, 'S', fav, purchases );
 
-	WATCard* realCard = new WATCard;
-
 	WATCard::FWATCard futureCard = cardOffice.create(id, 5);
 
 	VendingMachine* vend = nameServer.getMachine( id );
@@ -21,17 +19,15 @@ void Student::main() {
 		yield(rng(1, 10));
 
 		while ( true ) {
-			realCard = futureCard();
-
 			try {
-				VendingMachine::Status status = vend->buy(fav, *realCard);
+				VendingMachine::Status status = vend->buy(fav, *futureCard());
 
 				if ( status == VendingMachine::BUY ) {
 					--purchases;
-					prt.print( Printer::Student, id, 'B', realCard->getBalance() );
+					prt.print( Printer::Student, id, 'B', futureCard()->getBalance() );
 					break;
 				} else if ( status == VendingMachine::FUNDS ) {
-					futureCard = cardOffice.transfer(id, 5 + vend->cost(), realCard);
+					futureCard = cardOffice.transfer(id, 5 + vend->cost(), futureCard);
 				} else if ( status == VendingMachine::STOCK ) {
 					prt.print( Printer::Student, id, 'V', vend->getId() );
 					vend = nameServer.getMachine( id );
@@ -43,7 +39,6 @@ void Student::main() {
 		}
 	}
 
-	delete realCard;
 	prt.print( Printer::Student, id, 'F' );
 }
 
