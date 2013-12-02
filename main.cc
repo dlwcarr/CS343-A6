@@ -76,12 +76,11 @@ void uMain::main() {
 		delete students[i];
 
 	delete plant;
-	delete nameServer;	
 
 	for (unsigned int i = 0; i < machines.size(); i++) 
 		delete machines[i];
 
-	// delete nameServer;
+	delete nameServer;
 	delete parent;
 	delete office;
 	delete bank;
