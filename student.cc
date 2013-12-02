@@ -6,7 +6,7 @@ extern MPRNG rng;
 
 void Student::main() {
 	int purchases = rng(1, maxPurchases);
-	unsigned int fav = rng(0, 3);
+	VendingMachine::Flavour fav = static_cast<VendingMachine::Flavour>(rng(0, 3));
 
 	prt.print( Printer::Student, id, 'S', fav, purchases );
 
