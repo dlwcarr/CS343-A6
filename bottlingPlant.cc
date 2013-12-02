@@ -59,4 +59,6 @@ void BottlingPlant::main() {
 	
 	open = false;
 	printer.print(Printer::BottlingPlant, 'F');
+
+	return;
 }
