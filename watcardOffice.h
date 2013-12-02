@@ -1,6 +1,8 @@
 #ifndef WATCARDOFFICE_H
 #define WATCARDOFFICE_H
 
+#include <vector>
+
 _Task WATCardOffice {
     struct Job {                           // marshalled arguments and return future
         struct Args {
@@ -15,7 +17,18 @@ _Task WATCardOffice {
         FWATCard result;                   // return future
         Job( Args args ) : args( args ) {}
     };
-    _Task Courier { ... };                 // communicates with bank
+
+    _Task Courier {
+        unsigned int id;
+        Printer &prt;
+        Banke &bank;
+        WATCardOffice &cardOffice;
+
+        void main();
+
+      public:
+        Courier( Printer &prt, Bank &bank, WATCardOffice &cardOffice, unsigned int id );
+    };
 
     Printer &prt;
     Banke &bank;
