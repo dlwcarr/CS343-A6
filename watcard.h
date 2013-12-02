@@ -8,7 +8,7 @@ class WATCard {
     WATCard &operator=( const WATCard & );
 
     unsigned int balance;
-    uCondition withdraw;
+    uCondition withdrawCond;
 
   public:
     WATCard();

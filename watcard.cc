@@ -6,11 +6,11 @@ WATCard::WATCard() {
 
 void WATCard::deposit( unsigned int amount ) {
 	balance += amount;
-	withdraw.signal();
+	withdrawCond.signal();
 }
 
 void WATCard::withdraw( unsigned int amount ) {
-	while ( amount < balance ) withdraw.wait();
+	while ( amount < balance ) withdrawCond.wait();
 	balance -= amount;
 }
 
