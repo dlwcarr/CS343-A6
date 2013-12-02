@@ -62,10 +62,10 @@ void WATCardOffice::Courier::main() {
 		} _Else {
 			WATCardOffice::Job* job = cardOffice.requestWork();
 
-			prt.print( Printer::Courier, id, 't', job->args.sid, jobs->args.amount );
-			bank.withdraw( job->args.sid, jobs->args.amount );
-			job->args.card->deposit( jobs->args.amount );
-			prt.print( Printer::Courier, id, 'T', job->args.sid, jobs->args.amount );
+			prt.print( Printer::Courier, id, 't', job->args.sid, job->args.amount );
+			bank.withdraw( job->args.sid, job->args.amount );
+			job->args.card->deposit( job->args.amount );
+			prt.print( Printer::Courier, id, 'T', job->args.sid, job->args.amount );
 
 			if ( !rng(0,5) ) {
 				delete job->args.card;
