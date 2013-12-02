@@ -35,6 +35,7 @@ void Student::main() {
 				} else if ( status == VendingMachine::STOCK ) {
 					prt.print( Printer::Student, id, 'V', vend->getId() );
 					vend = nameServer.getMachine( id );
+					yield(rng(1, 10));
 				}
 			} catch ( WATCardOffice::Lost ) {
 				prt.print( Printer::Student, id, 'L' );
