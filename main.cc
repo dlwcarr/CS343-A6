@@ -77,12 +77,12 @@ void uMain::main() {
 
 	delete plant;
 
-	for (unsigned int i = 0; i < machines.size(); i++) 
+	for (unsigned int i = 0; i < machines.size(); i++)
 		delete machines[i];
 
 	delete nameServer;
-	delete parent;
 	delete office;
+	delete parent;
 	delete bank;
 	delete printer;
 }
