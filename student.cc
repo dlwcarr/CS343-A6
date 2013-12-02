@@ -41,6 +41,8 @@ void Student::main() {
 				futureCard = cardOffice.create(id, 5);
 			}
 		}
+
+		delete futureCard();
 	}
 
 	prt.print( Printer::Student, id, 'F' );
