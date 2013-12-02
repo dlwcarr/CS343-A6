@@ -2,6 +2,9 @@
 #define WATCARDOFFICE_H
 
 #include <vector>
+#include "watcard.h"
+#include "printer.h"
+#include "bank.h"
 
 _Task WATCardOffice {
     struct Job {                           // marshalled arguments and return future
@@ -31,7 +34,7 @@ _Task WATCardOffice {
     };
 
     Printer &prt;
-    Banke &bank;
+    Bank &bank;
     unsigned int numCouriers;
     vector<Job*> jobs;
 

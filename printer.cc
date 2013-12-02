@@ -1,5 +1,7 @@
 #include "printer.h"
+#include <iostream>
 
+using namespace std;
 
 Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsigned int numCouriers) :
   	numStudents(numStudents), numVendingMachines(numVendingMachines), numCouriers(numCouriers) {
@@ -10,7 +12,7 @@ Printer::Printer(unsigned int numStudents, unsigned int numVendingMachines, unsi
 	val1buff = new int[total]();
 	val2buff = new int[total]();
 
-	cout << "Parent\tWATOff\tNames\tTruck\tPlant\t"
+	cout << "Parent\tWATOff\tNames\tTruck\tPlant\t";
 
 	// print initial table header
 	for ( unsigned int i = 0; i < numStudents; i++ ) {
@@ -39,7 +41,7 @@ void Printer::flush() {
 	if ( val2buff[i] != 0 ) cout << "," << val2buff[i];
 	cout << "\t";
 
-	buffer[i] = '\0';
+	buff[i] = '\0';
 	val1buff[i] = 0;
 	val2buff[i] = 0;
   } // for
@@ -56,6 +58,7 @@ unsigned int Printer::getPos( Kind kind, unsigned int lid ) {
 		case Courier:
 			return 5 + numStudents + numVendingMachines + lid;
 	}
+	return 0;
 }
 
 
@@ -63,7 +66,7 @@ void Printer::print( Kind kind, char state ) {
 	if ( state == 'F' ) {
 		flush();
 		for ( unsigned int i = 0; i < total; i++) {
-			if ( i == kind ) {
+			if ( i == (unsigned int)kind ) {
 				cout << state << "\t";
 			} else {
 				cout << "..." << "\t";

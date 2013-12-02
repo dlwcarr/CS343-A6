@@ -1,5 +1,4 @@
 #include "student.h"
-#include "printer.h"
 #include "MPRNG.h"
 
 extern MPRNG rng;
