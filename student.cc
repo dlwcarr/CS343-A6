@@ -6,7 +6,7 @@ extern MPRNG rng;
 
 void Student::main() {
 	int purchases = rng(1, maxPurchases);
-	int fav = rng(0, 3);
+	unsigned int fav = rng(0, 3);
 
 	prt.print( Printer::Student, id, 'S', fav, purchases );
 
