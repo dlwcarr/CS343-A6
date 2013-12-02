@@ -76,12 +76,7 @@ void uMain::main() {
 		delete students[i];
 
 	delete plant;
-
-	osacquire(cout) << "deleted plant" << endl;
-
-	delete nameServer;
-
-	osacquire(cout) << "deleted nameserver" << endl;	
+	delete nameServer;	
 
 	for (unsigned int i = 0; i < machines.size(); i++) 
 		delete machines[i];

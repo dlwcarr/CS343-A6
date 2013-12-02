@@ -14,7 +14,6 @@ NameServer::NameServer( Printer &prt, unsigned int numVendingMachines, unsigned 
 }
 
 NameServer::~NameServer() {
-	osacquire(cout) << "in DESTRUCTOR" << endl;
 	delete [] machineList;
 	delete [] studentsMachine;
 
