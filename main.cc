@@ -4,10 +4,17 @@
 #include <vector>
 #include "MPRNG.h"
 #include "config.h"
+#include "printer.h"
+#include "bank.h"
+#include "parent.h"
+#include "watcardOffice.h"
+#include "nameServer.h"
+#include "vendingMachine.h"
+#include "student.h"
 
 using namespace std;
 
-MPRNG rng;
+
 
 void printUsage(char *argv) {
 	osacquire(cout) << "Usage: " << argv << " [ config-file [ random-seed (> 0) ] ]" << endl;
