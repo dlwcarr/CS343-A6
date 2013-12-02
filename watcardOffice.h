@@ -14,7 +14,7 @@ _Task WATCardOffice {
             unsigned int sid;
             unsigned int amount;
             Args ( unsigned int sid, unsigned int amount, WATCard *card ) :
-                sid(sid), amount(amount), card(card) {}
+                card(card), sid(sid), amount(amount) {}
         };
 
         Args args;                         // call arguments (YOU DEFINE "Args")
