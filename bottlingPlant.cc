@@ -56,6 +56,7 @@ void BottlingPlant::main() {
 			produceShipment();
 		}
 	}
-
+	
+	open = false;
 	printer.print(Printer::BottlingPlant, 'F');
 }

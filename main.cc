@@ -57,17 +57,32 @@ void uMain::main() {
 	vector<VendingMachine*> machines(config.numVendingMachines);
 	vector<Student*> students(config.numStudents);
 
-	Printer printer(config.numStudents, config.numVendingMachines, config.numCouriers);
-	Bank bank(config.numStudents);
-	Parent parent(printer, bank, config.numStudents, config.parentalDelay);
-	WATCardOffice office(printer, bank, config.numCouriers);
-	NameServer nameServer(printer, config.numVendingMachines, config.numStudents);
+	Printer* printer = new Printer(config.numStudents, config.numVendingMachines, config.numCouriers);
+	Bank* bank = new Bank(config.numStudents);
+	Parent* parent = new Parent(*printer, *bank, config.numStudents, config.parentalDelay);
+	WATCardOffice* office = new WATCardOffice(*printer, *bank, config.numCouriers);
+	NameServer* nameServer = new NameServer(*printer, config.numVendingMachines, config.numStudents);
 
 	for(unsigned int i = 0; i < machines.size(); i++)
-		machines[i] = new VendingMachine(printer, nameServer, i, config.sodaCost, config.maxStockPerFlavour);
+		machines[i] = new VendingMachine(*printer, *nameServer, i, config.sodaCost, config.maxStockPerFlavour);
 
-	BottlingPlant plant(printer, nameServer, config.numVendingMachines, config.maxShippedPerFlavour, config.maxStockPerFlavour, config.timeBetweenShipments);
+	BottlingPlant* plant = new BottlingPlant(*printer, *nameServer, config.numVendingMachines, config.maxShippedPerFlavour, config.maxStockPerFlavour, config.timeBetweenShipments);
 
 	for(unsigned int i = 0; i < students.size(); i++)
-		students[i] = new Student(printer, nameServer, office, i, config.maxPurchases);
+		students[i] = new Student(*printer, *nameServer, *office, i, config.maxPurchases);
+
+
+	for (unsigned int i = 0; i < students.size(); i++)
+		delete students[i];
+
+	delete plant;
+
+	for (unsigned int i = 0; i < machines.size(); i++) 
+		delete machines[i];
+
+	delete nameServer;
+	delete office;
+	delete parent;
+	delete bank;
+	delete printer;
 }
